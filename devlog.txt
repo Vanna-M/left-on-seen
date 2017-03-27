@@ -1,4 +1,6 @@
 Everyone -- 17-28-03 13:49
 
 * Received helpful feedback
-* 2d or 3d visualization?
+* Scaling could be difficult (with spaces)
+* 3d visualization could be some hardness
+
