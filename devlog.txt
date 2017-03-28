@@ -1,6 +1,15 @@
-Everyone -- 17-28-03 13:49
+    __         ______     ____           _____               
+   / /   ___  / __/ /_   / __ \____     / ___/___  ___  ____ 
+  / /   / _ \/ /_/ __/  / / / / __ \    \__ \/ _ \/ _ \/ __ \
+ / /___/  __/ __/ /_   / /_/ / / / /   ___/ /  __/  __/ / / /
+/_____/\___/_/  \__/   \____/_/ /_/   /____/\___/\___/_/ /_/ 
 
-* Received helpful feedback
-* Scaling could be difficult (with spaces)
-* 3d visualization could be some hardness
+Project Manager: Vanna Mavromatis
+Other Members: Billy Wong, Jiaqi Gao
+
+everyone -- 2017-28-03 22:51
+* Received helpful feedback from peer (see below)
+* Scaling could be difficult, prioritize what aspects to make accurate
+* 2D visualization
+* Use of SVG
 
