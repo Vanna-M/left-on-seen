@@ -1,0 +1,243 @@
+name,date,type
+Sputnik 1,4 October 1957,Earth Orbiter
+Sputnik 2,3 November 1957,Earth Orbiter
+Vanguard TV3,6 December 1957,Attempted Earth Orbiter (Launch Failure)
+Explorer 1,1 February 1958,Earth Orbiter
+Vanguard 1,17 March 1958,Earth Orbiter
+Pioneer 0,17 August 1958,Attempted Lunar Orbit (Launch Failure)
+Luna 1958A,23 September 1958,Attempted Lunar Impact? (Launch Failure)
+Pioneer 1,11 October 1958,Attempted Lunar Orbit (Launch Failure)
+Luna 1958B,12 October 1958,Attempted Lunar Impact? (Launch Failure)
+Pioneer 2,8 November 1958,Attempted Lunar Orbit (Launch Failure)
+Luna 1958C,4 December 1958,Attempted Lunar Impact? (Launch Failure)
+Pioneer 3,6 December 1958,Attempted Lunar Flyby (Launch Failure)
+Luna 1,2 January 1959,Lunar Flyby (Attempted Lunar Impact?)
+Pioneer 4,3 March 1959,Lunar Flyby
+Luna 1959A,16 June 1959,Attempted Lunar Impact? (Launch Failure)
+Luna 2,12 September 1959,Lunar Impact
+Luna 3,4 October 1959,Lunar Flyby
+Pioneer P-3,26 November 1959,Attempted Lunar Orbiter (Launch Failure)
+Luna 1960A,15 April 1960,Attempted Lunar Flyby (Launch Failure)
+Luna 1960B,18 April 1960,Attempted Lunar Flyby (Launch Failure)
+Pioneer P-30,25 Sept 1960,Attempted Lunar Orbiter (Launch Failure)
+Marsnik 1 (Mars 1960A),10 October 1960,Attempted Mars Flyby (Launch Failure)
+Marsnik 2 (Mars 1960B),14 October 1960,Attempted Mars Flyby (Launch Failure)
+Pioneer P-31,15 December 1960,Attempted Lunar Orbiter (Launch Failure)
+Sputnik 7,4 February 1961,Attempted Venus Impact
+Venera 1,12 February 1961,Venus Flyby (Contact Lost)
+Ranger 1,23 August 1961,Attempted Lunar Test Flight
+Ranger 2,18 November 1961,Attempted Lunar Test Flight
+Ranger 3,26 January 1962,Attempted Lunar Impact
+Ranger 4,23 April 1962,Lunar Impact
+Mariner 1,22 July 1962,Attempted Venus Flyby (Launch Failure)
+Sputnik 19,25 August 1962,Attempted Venus Flyby
+Mariner 2,27 August 1962,Venus Flyby
+Sputnik 20,1 September 1962,Attempted Venus Flyby
+Sputnik 21,12 September 1962,Attempted Venus Flyby
+Ranger 5,18 October 1962,Attempted Lunar Impact
+Sputnik 22,24 October 1962,Attempted Mars Flyby
+Mars 1,1 November 1962,Mars Flyby (Contact Lost)
+Sputnik 24,4 November 1962,Attempted Mars Lander
+Sputnik 25,4 January 1963,Attempted Lunar Lander
+Luna 1963B,2 February 1963,Attempted Lunar Lander (Launch Failure)
+Luna 4,2 April 1963,Attempted Lunar Lander
+Cosmos 21,11 November 1963,Attempted Venera Test Flight?
+Ranger 6,30 January 1964,Lunar Impact (Cameras Failed)
+Venera 1964A,19 February 1964,Attempted Venus Flyby (Launch Failure)
+Venera 1964B,1 March 1964,Attempted Venus Flyby (Launch Failure)
+Luna 1964A,21 March 1964,Attempted Lunar Lander (Launch Failure)
+Cosmos 27,27 March 1964,Attempted Venus Flyby
+Zond 1,2 April 1964,Venus Flyby (Contact Lost)
+Luna 1964B,20 April 1964,Attempted Lunar Lander (Launch Failure)
+Zond 1964A,4 June 1964,Attempted Lunar Lander (Launch Failure)
+Ranger 7,28 July 1964,Lunar Impact
+Mariner 3,5 November 1964,Attempted Mars Flyby
+Mariner 4,28 November 1964,Mars Flyby
+Zond 2,30 November 1964,Mars Flyby (Contact Lost)
+Ranger 8,17 February 1965,Lunar Impact
+Cosmos 60,12 March 1965,Attempted Lunar Lander
+Ranger 9,21 March 1965,Lunar Impact
+Luna 1965A,10 April 1965,Attempted Lunar Lander? (Launch Failure)
+Luna 5,9 May 1965,Lunar Impact (Attempted Soft Landing)
+Luna 6,8 June 1965,Attempted Lunar Lander
+Zond 3,18 July 1965,Lunar Flyby
+Luna 7,4 October 1965,Lunar Impact (Attempted Soft Landing)
+Venera 2,12 November 1965,Venus Flyby (Contact Lost)
+Venera 3,16 November 1965,Venus Lander (Contact Lost)
+Cosmos 96,23 November 1965,Attempted Venus Lander?
+Venera 1965A,23 November 1965,Attempted Venus Flyby (Launch Failure)
+Luna 8,3 December 1965,Lunar Impact (Attempted Soft Landing?)
+Luna 9,31 January 1966,Lunar Lander
+Cosmos 111,1 March 1966,Attempted Lunar Orbiter?
+Luna 10,31 March 1966,Lunar Orbiter
+Luna 1966A,30 April 1966,Attempted Lunar Orbiter? (Launch Failure)
+Surveyor 1,30 May 1966,Lunar Lander
+Explorer 33,1 July 1966,Attempted Lunar Orbiter
+Lunar Orbiter 1,10 August 1966,Lunar Orbiter
+Luna 11,24 August 1966,Lunar Orbiter
+Surveyor 2,20 September 1966,Attempted Lunar Lander
+Luna 12,22 October 1966,Lunar Orbiter
+Lunar Orbiter 2,6 November 1966,Lunar Orbiter
+Luna 13,21 December 1966,Lunar Lander
+Lunar Orbiter 3,4 February 1967,Lunar Orbiter
+Surveyor 3,17 April 1967,Lunar Lander
+Lunar Orbiter 4,8 May 1967,Lunar Orbiter
+Venera 4,12 June 1967,Venus Probe
+Mariner 5,14 June 1967,Venus Flyby
+Cosmos 167,17 June 1967,Attempted Venus Probe
+Surveyor 4,14 July 1967,Attempted Lunar Lander
+Explorer 35 (IMP-E),19 July 1967,Lunar Orbiter
+Lunar Orbiter 5,1 August 1967,Lunar Orbiter
+Surveyor 5,8 September 1967,Lunar Lander
+Zond 1967A,28 September 1967,Attempted Lunar Test Flight (Launch Failure)
+Surveyor 6,7 November 1967,Lunar Lander
+Zond 1967B,22 November 1967,Attempted Lunar Test Flight (Launch Failure)
+Surveyor 7,7 January 1968,Lunar Lander
+Luna 1968A,7 February 1968,Attempted Lunar Orbiter (Launch Failure)
+Zond 4,2 March 1968,Test Flight
+Luna 14,7 April 1968,Lunar Orbiter
+Zond 1968A,23 April 1968,Attempted Lunar Test Flight? (Launch Failure)
+Zond 5,15 September 1968,Lunar Flyby and Return to Earth
+Zond 6,10 November 1968,Lunar Flyby and Return to Earth
+Apollo 8,21 December 1968,Crewed Lunar Orbiter
+Venera 5,5 January 1969,Venus Probe
+Venera 6,10 January 1969,Venus Probe
+Zond 1969A,20 January 1969,Attempted Lunar Flyby and Return (Launch Failure)
+Luna 1969A,19 February 1969,Attempted Lunar Rover? (Launch Failure)
+Zond L1S-1,21 February 1969,Attempted Lunar Orbiter (Launch Failure)
+Mariner 6,25 February 1969,Mars Flyby
+Mariner 7,27 March 1969,Mars Flyby
+Mars 1969A,27 March 1969,Attempted Mars Orbiter (Launch Failure)
+Mars 1969B,2 April 1969,Attempted Mars Orbiter (Launch Failure)
+Luna 1969B,15 April 1969,Attempted Lunar Sample Return? (Launch Failure)
+Apollo 10,18 May 1969,Crewed Lunar Orbiter
+Luna 1969C,14 June 1969,Attempted Lunar Sample Return? (Launch Failure)
+Zond L1S-2,3 July 1969,Attempted Lunar Orbiter (Launch Failure)
+Luna 15,13 July 1969,Lunar Orbiter (Attempted Lunar Lander?)
+Apollo 11,16 July 1969,Crewed Lunar Landing
+Zond 7,7 August 1969,Lunar Flyby and Return to Earth
+Cosmos 300,23 September 1969,Attempted Lunar Sample Return?
+Cosmos 305,22 October 1969,Attempted Lunar Sample Return?
+Apollo 12,14 November 1969,Crewed Lunar Landing
+Luna 1970A,6 February 1970,Attempted Lunar Sample Return? (Launch Failure)
+Luna 1970B,19 February 1970,Attempted Lunar Orbiter? (Launch Failure)
+Apollo 13,11 April 1970,Crewed Lunar Mission (Landing Aborted)
+Venera 7,17 August 1970,Venus Lander
+Cosmos 359,22 August 1970,Attempted Venus Probe
+Luna 16,12 September 1970,Lunar Sample Return
+Zond 8,20 October 1970,Lunar Flyby and Return to Earth
+Luna 17/Lunokhod 1,10 November 1970,Lunar Rover
+Apollo 14,31 January 1971,Crewed Lunar Landing
+Mariner 8,9 May 1971,Attempted Mars Flyby (Launch Failure)
+Cosmos 419,10 May 1971,Attempted Mars Orbiter/Lander
+Mars 2,19 May 1971,Mars Orbiter/ Attempted Lander
+Mars 3,28 May 1971,Mars Orbiter/ Lander
+Mariner 9,30 May 1971,Mars Orbiter
+Apollo 15,26 July 1971,Crewed Lunar Landing
+Luna 18,2 September 1971,Attempted Lunar Sample Return
+Luna 19,28 September 1971,Lunar Orbiter
+Luna 20,14 February 1972,Lunar Sample Return
+Pioneer 10,3 March 1972,Jupiter Flyby
+Venera 8,27 March 1972,Venus Probe
+Cosmos 482,31 March 1972,Attempted Venus Probe
+Apollo 16,16 April 1972,Crewed Lunar Landing
+Soyuz L3,23 November 1972,Attempted Lunar Orbiter (Launch Failure)
+Apollo 17,7 December 1972,Crewed Lunar Landing
+Luna 21/Lunokhod 2,8 January 1973,Lunar Rover
+Pioneer 11,5 April 1973,Jupiter/Saturn Flyby
+Skylab,14 May 1973,Crewed Earth Orbiter
+Explorer 49 (RAE-B),10 June 1973,Lunar Orbiter/Radio Astronomy
+Mars 4,21 July 1973,Mars Flyby (Attempted Mars Orbiter)
+Mars 5,25 July 1973,Mars Orbiter
+Mars 6,5 August 1973,Mars Lander (Contact Lost)
+Mars 7,9 August 1973,Mars Flyby (Attempted Mars Lander)
+Mariner 10,4 November 1973,Venus/Mercury Flybys
+Luna 22,2 June 1974,Lunar Orbiter
+Luna 23,28 October 1974,Attempted Lunar Sample Return
+Venera 9,8 June 1975,Venus Orbiter and Lander
+Venera 10,14 June 1975,Venus Orbiter and Lander
+Viking 1,20 August 1975,Mars Orbiter and Lander
+Viking 2,9 September 1975,Mars Orbiter and Lander
+Luna 1975A,16 October 1975,Attempted Lunar Sample Return?
+Luna 24,9 August 1976,Lunar Sample Return
+Voyager 2,20 August 1977,Jupiter/Saturn/Uranus/Neptune Flyby
+Voyager 1,5 September 1977,Jupiter/Saturn Flyby
+Pioneer Venus 1,20 May 1978,Venus Orbiter
+Pioneer Venus 2,8 August 1978,Venus Probes
+ISEE-3/ICE,12 August 1978,Comet Giacobini-Zinner and Halley Flybys
+Venera 11,9 September 1978,Venus Orbiter and Lander
+Venera 12,14 September 1978,Venus Orbiter and Lander
+Venera 13,30 October 1981,Venus Orbiter and Lander
+Venera 14,4 November 1981,Venus Orbiter and Lander
+Venera 15,2 June 1983,Venus Orbiter
+Venera 16,7 June 1983,Venus Orbiter
+Vega 1,15 December 1984,Venus Lander and Balloon/Comet Halley Flyby
+Vega 2,21 December 1984,Venus Lander and Balloon/Comet Halley Flyby
+Sakigake,7 January 1985,Comet Halley Flyby
+Giotto,2 July 1985,Comet Halley Flyby
+Suisei (Planet-A),18 August 1985,Comet Halley Flyby
+Phobos 1,7 July 1988,Attempted Mars Orbiter/Phobos Landers
+Phobos 2,12 July 1988,Mars Orbiter/Attempted Phobos Landers
+Magellan,4 May 1989,Venus Orbiter
+Galileo,18 October 1989,Jupiter Orbiter and Probe
+Hiten,24 January 1990,Lunar Flyby and Orbiter
+Hubble Space Telescope,25 April 1990,Earth Orbiting Observatory
+Ulysses,06 October 1990,Jupiter Flyby and Solar Polar Orbiter
+Mars Observer,25 September 1992,Attempted Mars Orbiter (Contact Lost)
+Clementine,25 January 1994,Lunar Orbiter/Attempted Asteroid Flyby
+NEAR,17 February 1996,Asteroid Eros Orbiter
+Mars Global Surveyor,07 November 1996,Mars Orbiter
+Mars 96,16 November 1996,Attempted Mars Orbiter/Landers
+Mars Pathfinder,04 December 1996,Mars Lander and Rover
+Cassini,15 October 1997,Saturn Orbiter
+Huygens,15 October 1997,Titan Probe
+AsiaSat 3/HGS-1,24 December 1997,Lunar Flyby
+Lunar Prospector,7 January 1998,Lunar Orbiter
+Nozomi (Planet-B),3 July 1998,Mars Orbiter
+Deep Space 1 (DS1),24 October 1998,Asteroid and Comet Flyby
+Mars Climate Orbiter,11 December 1998,Attempted Mars Orbiter
+Mars Polar Lander,3 January 1999,Attempted Mars Lander
+Deep Space 2 (DS2),3 January 1999,Attempted Mars Penetrators
+Stardust,7 February 1999,Comet Coma Sample Return
+2001 Mars Odyssey,7 April 2001,Mars Orbiter
+Genesis,8 August 2001,Solar Wind Sample Return
+CONTOUR,3 July 2002,Fly-by of three Comet Nuclei
+Hayabusa (Muses-C),9 May 2003,Asteroid Orbiter and Sample Return
+Mars Express,2 June 2003,Mars Orbiter and Lander
+Spirit (MER-A),10 June 2003,Mars Rover
+Opportunity (MER-B),8 July 2003,Mars Rover
+SMART 1,September 2003,Lunar Orbiter
+Rosetta,2 March 2004,Comet Orbiter and Lander
+MESSENGER,3 August 2004,Mercury Orbiter
+Deep Impact,12 January 2005,Comet Rendezvous and Impact
+Mars Reconnaisance Orbiter,12 August 2005,Mars Orbiter
+Venus Express,09 November 2005,ESA Venus Orbiter
+New Horizons,19 January 2006,Pluto/Charon and Kuiper Belt Flyby
+Phoenix,04 August 2007,Small Mars Scout Lander
+Kaguya (SELENE),14 September 2007,Lunar Orbiter
+Dawn,27 September 2007,Asteroid Ceres and Vesta Orbiter
+Chang'e 1,24 October 2007,CAST (China) Lunar Orbiter
+Lunar-A,Cancelled,Lunar Orbiter and Penetrators
+Chandrayaan-1,22 October 2008,ISRO (India) Lunar Orbiter
+Kepler,7 March 2009,Extrasolar Terrestrial Planet Detection Mission
+Lunar Reconnaissance Orbiter,18 June 2009,Lunar Orbiter
+LCROSS,18 June 2009,Lunar Impactor
+Akatsuki/Planet-C,20 May 2010,ISAS Venus Orbiter
+Chang'e 2,1 October 2010,CAST (China) Lunar Orbiter
+Juno,5 August 2011,Jupiter Orbiter
+GRAIL,10 September 2011,Lunar Orbiter
+Phobos-Grunt,08 November 2011,Attempted Martian Moon Phobos Lander
+Yinghuo-1,08 November 2011,Attempted Mars Orbiter
+Mars Science Laboratory,26 November 2011,Mars Rover
+LADEE,06 September 2013,Lunar Orbiter
+Mangalyaan,05 November 2013,ISRO (India) Mars Orbiter
+MAVEN,18 November 2013,Mars Scout Mission Orbiter
+Chang'e 3,01 December 2013,Lunar Lander and Rover
+Chang'e 5 Test Vehicle,23 October 2014,Lunar Flyby and Return
+Hayabusa 2,3 December 2014,JAXA Asteroid Sample Return
+PROCYON,3 December 2014,JAXA Asteroid Flyby Mission
+ExoMars 2016,14 March 2016,ESA Mars Orbiter and Lander
+OSIRIS REx,8 September 2016,Sample Return Mission to Asteroid Bennu
+Chang'e 5,2017,CNSA (China) Lunar Sample Return Mission
+BepiColombo,April 2018,ESA and JAXA Mercury Orbiters
+InSight,5 May 2018,Mars Lander
