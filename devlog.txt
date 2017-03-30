@@ -21,3 +21,8 @@ BillyW -- 2017-29-03 22:19
 JiaqiG -- 2017-29-03 22:45
 * Set up d3 usage in js file
 * Created planets and their attributes
+
+VannaM -- 2017-29-03 23:42
+*Set up app.py
+*Added data points from py to jscript dict files
+*Switch to inline jscript to make flask use possible
