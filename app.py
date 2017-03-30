@@ -9,7 +9,7 @@ def root():
     #rockets: dict of all rocket launches, saved as: {date:destination}
     rotPds = get_rotPds()
     rockets = get_rockets()
-    return render_template("index.html",rotPds=rotPds,rockets={"date":"dest"})
+    return render_template("index.html",rotPds=rotPds,rockets=rockets);
 
 
 def get_rotPds():
@@ -18,7 +18,7 @@ def get_rotPds():
     pds = []
     for row in read:
         if row[0] == 'Rotation Period (hours)':
-            pds = row
+            pds = row[1:]
     f.close()
     return pds
 

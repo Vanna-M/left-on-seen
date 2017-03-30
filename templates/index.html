@@ -3,10 +3,51 @@
     <title>Heliocentric</title>
   </head>
   <body>
-    <svg width="500" height="500" id="svg">   
+    <svg width="500" height="500" id="svg">
     </svg>
-    
+
     <script src="http://d3js.org/d3.v3.js"></script>
-    <script src="index.js"></script>
+    <script>
+        var svg = d3.select("#svg");
+
+        var planets = [//MERCURY,VENUS,EARTH,MOON,MARS,JUPITER,SATURN,URANUS,NEPTUNE,PLUTO
+            {"name":"Mercury", "size": 20, "x_axis": 30, "y_axis": 100, "color":"red"},
+            {"name":"Venus", "size": 20, "x_axis": 60, "y_axis": 100, "color":"red"},
+            {"name":"Earth", "size": 20, "x_axis": 90, "y_axis": 100, "color":"red"},
+            {"name":"Moon", "size": 20, "x_axis": 120, "y_axis": 100, "color":"red"},
+            {"name":"Mars", "size": 20, "x_axis": 120, "y_axis": 100, "color":"red"},
+            {"name":"Jupiter", "size": 20, "x_axis": 150, "y_axis": 100, "color":"red"},
+            {"name":"Saturn", "size": 20, "x_axis": 180, "y_axis": 100, "color":"red"},
+            {"name":"Uranus", "size": 20, "x_axis": 210, "y_axis": 100, "color":"red"},
+            {"name":"Neptune", "size": 20, "x_axis": 240, "y_axis": 100, "color":"red"},
+            {"name":"Pluto", "size": 20, "x_axis": 120, "y_axis": 100, "color":"red"}
+        ];
+
+        var n = 0;
+        {%for i in rotPds%}
+            planets[n]["orbpd"] = "{{i}}";
+            n++;
+        {%endfor%}
+
+        {%for i in rockets%}
+            var l = "{{i}}".split(" ");
+            var yr = l[2];
+        {%endfor%}
+
+
+        var circles = svg.selectAll("circle")
+            .data(planets)
+            .enter()
+            .append("circle");
+
+        var circleAttributes = circles
+            .attr("cx", function (d) { return d.x_axis; })
+            .attr("cy", function (d) { return d.y_axis; })
+            .attr("r", function (d) { return d.size; })
+            .style("fill", function(d) { return d.color; });
+
+        
+
+    </script>
   </body>
 </html>
