@@ -73,6 +73,7 @@
 
             //makes planets rotate
             var animatePlanets = function(event){
+                clear();
                 for (j in planets){
                     var i = planets[j];
 
@@ -81,7 +82,7 @@
                     //current angle
                     var t = i["t"];
                     //new angle
-                    var addT = i['orbpd'];
+                    var addT = (2*Math.PI)/i['orbpd'];
                     var newt = addT;
                     //reset t
                     /*if (newt >= 2*Math.PI){
@@ -95,6 +96,7 @@
                     //new x and y vals
                     var x = Math.cos(t) + x_i;
                     var y = Math.sin(t) + i['y'];
+                    i['y'] = y;
                     //console.log(x + "," + y);
                     //console.log(y);
                     //console.log(x_i);
@@ -112,13 +114,12 @@
 
                 }
                 //console.log("");
-                //clear();
 
 
             }
 
             //set animation time for planets
-            intervalId = window.setInterval(animatePlanets,16);
+            intervalId = window.setInterval(animatePlanets,30);
         }
 
 
