@@ -21,16 +21,16 @@
         var svg = d3.select("#svg");
 
         var planets = [
-            {"name":"Mercury", "size": 20, "x_axis": 30, "x":30, "y": 100, "color":"red", "t":0},
-            {"name":"Venus", "size": 20, "x_axis": 90, "x":90, "y": 100, "color":"red", "t":0},
-            {"name":"Earth", "size": 20, "x_axis": 150, "x":150, "y": 100, "color":"red", "t":0},
-            {"name":"Moon", "size": 20, "x_axis": 210, "x":210, "y": 100, "color":"red", "t":0},
-            {"name":"Mars", "size": 20, "x_axis": 270, "x":270, "y": 100, "color":"red", "t":0},
-            {"name":"Jupiter", "size": 20, "x_axis": 330, "x":330, "y": 100, "color":"red", "t":0},
-            {"name":"Saturn", "size": 20, "x_axis": 390, "x":390, "y": 100, "color":"red", "t":0},
-            {"name":"Uranus", "size": 20, "x_axis": 450, "x": 450, "y": 100, "color":"red", "t":0},
-            {"name":"Neptune", "size": 20, "x_axis": 510, "x":510, "y": 100, "color":"red", "t":0},
-            {"name":"Pluto", "size": 20, "x_axis": 570, "x":570, "y": 100, "color":"red", "t":0}
+            {"name":"Mercury", "size": 20, "x_axis": 30, "x":0, "y": 100, "color":"red", "t":0},
+            {"name":"Venus", "size": 20, "x_axis": 90, "x":0, "y": 100, "color":"red", "t":0},
+            {"name":"Earth", "size": 20, "x_axis": 150, "x":0, "y": 100, "color":"red", "t":0},
+            {"name":"Moon", "size": 20, "x_axis": 210, "x":0, "y": 100, "color":"red", "t":0},
+            {"name":"Mars", "size": 20, "x_axis": 270, "x":0, "y": 100, "color":"red", "t":0},
+            {"name":"Jupiter", "size": 20, "x_axis": 330, "x":0, "y": 100, "color":"red", "t":0},
+            {"name":"Saturn", "size": 20, "x_axis": 390, "x":0, "y": 100, "color":"red", "t":0},
+            {"name":"Uranus", "size": 20, "x_axis": 450, "x": 0, "y": 100, "color":"red", "t":0},
+            {"name":"Neptune", "size": 20, "x_axis": 510, "x":0, "y": 100, "color":"red", "t":0},
+            {"name":"Pluto", "size": 20, "x_axis": 570, "x":0, "y": 100, "color":"red", "t":0}
         ];
 
         var circles = svg.selectAll("circle")
@@ -83,7 +83,7 @@
                     var t = i["t"];
                     //new angle
                     var addT = (2*Math.PI)/i['orbpd'];
-                    var newt = addT;
+                    var newt = addT + i['t'];
                     //reset t
                     /*if (newt >= 2*Math.PI){
                         newt -= 2*Math.PI;
@@ -94,9 +94,8 @@
                     i["t"] = newt;
 
                     //new x and y vals
-                    var x = Math.cos(t) + x_i;
-                    var y = Math.sin(t) + i['y'];
-                    i['y'] = y;
+                    var x = x_i*Math.cos(t);
+                    var y = x_i*Math.sin(t);
                     //console.log(x + "," + y);
                     //console.log(y);
                     //console.log(x_i);
