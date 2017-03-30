@@ -3,34 +3,56 @@
     <title>Heliocentric</title>
   </head>
   <body>
-    <svg width="500" height="500" id="svg">
+    <svg width="1000" height="1000" id="svg">
     </svg>
 
     <script src="http://d3js.org/d3.v3.js"></script>
     <script>
+
+
+        //------------------set up variables------------------
+
+
+
+        //declare variables
+        var pic = document.getElementById("svg");
+        var intervalId;
+
         var svg = d3.select("#svg");
 
         var planets = [
-            {"name":"Mercury", "size": 20, "x_axis": 30, "y_axis": 100, "color":"red"},
-            {"name":"Venus", "size": 20, "x_axis": 60, "y_axis": 100, "color":"red"},
-            {"name":"Earth", "size": 20, "x_axis": 90, "y_axis": 100, "color":"red"},
-            {"name":"Moon", "size": 20, "x_axis": 120, "y_axis": 100, "color":"red"},
-            {"name":"Mars", "size": 20, "x_axis": 120, "y_axis": 100, "color":"red"},
-            {"name":"Jupiter", "size": 20, "x_axis": 150, "y_axis": 100, "color":"red"},
-            {"name":"Saturn", "size": 20, "x_axis": 180, "y_axis": 100, "color":"red"},
-            {"name":"Uranus", "size": 20, "x_axis": 210, "y_axis": 100, "color":"red"},
-            {"name":"Neptune", "size": 20, "x_axis": 240, "y_axis": 100, "color":"red"},
-            {"name":"Pluto", "size": 20, "x_axis": 120, "y_axis": 100, "color":"red"}
+            {"name":"Mercury", "size": 20, "x_axis": 30, "x":30, "y": 100, "color":"red", "t":0},
+            {"name":"Venus", "size": 20, "x_axis": 90, "x":90, "y": 100, "color":"red", "t":0},
+            {"name":"Earth", "size": 20, "x_axis": 150, "x":150, "y": 100, "color":"red", "t":0},
+            {"name":"Moon", "size": 20, "x_axis": 210, "x":210, "y": 100, "color":"red", "t":0},
+            {"name":"Mars", "size": 20, "x_axis": 270, "x":270, "y": 100, "color":"red", "t":0},
+            {"name":"Jupiter", "size": 20, "x_axis": 330, "x":330, "y": 100, "color":"red", "t":0},
+            {"name":"Saturn", "size": 20, "x_axis": 390, "x":390, "y": 100, "color":"red", "t":0},
+            {"name":"Uranus", "size": 20, "x_axis": 450, "x": 450, "y": 100, "color":"red", "t":0},
+            {"name":"Neptune", "size": 20, "x_axis": 510, "x":510, "y": 100, "color":"red", "t":0},
+            {"name":"Pluto", "size": 20, "x_axis": 570, "x":570, "y": 100, "color":"red", "t":0}
         ];
 
-        var spaceships = {};
+        var circles = svg.selectAll("circle")
+            .data(planets)
+            .enter()
+            .append("circle");
 
+        var circleAttributes = circles
+            .attr("cx", function (d) { return d.x; })
+            .attr("cy", function (d) { return d.y; })
+            .attr("r", function (d) { return d.size; })
+            .style("fill", function(d) { return d.color; });
+
+        //add orbital periods into planet dicts
         var n = 0;
         {%for i in rotPds%}
             planets[n]["orbpd"] = "{{i}}";
             n++;
         {%endfor%}
 
+        //adds rockets w/date and destination into spaceships dict
+        var spaceships = {};
         {%for i in rockets%}
             var l = "{{i}}".split(" ");
             //spaceships[] = l[2];
@@ -42,17 +64,76 @@
         {%endfor%}
 
 
-        var circles = svg.selectAll("circle")
-            .data(planets)
-            .enter()
-            .append("circle");
 
-        var circleAttributes = circles
-            .attr("cx", function (d) { return d.x_axis; })
-            .attr("cy", function (d) { return d.y_axis; })
-            .attr("r", function (d) { return d.size; })
-            .style("fill", function(d) { return d.color; });
+        //------------------ animation ------------------
 
+
+
+        var animate = function(event){
+
+            //makes planets rotate
+            var animatePlanets = function(event){
+                for (j in planets){
+                    var i = planets[j];
+
+                    //current x val
+                    var x_i = i['x_axis'];
+                    //current angle
+                    var t = i["t"];
+                    //new angle
+                    var addT = i['orbpd'];
+                    var newt = addT;
+                    //reset t
+                    /*if (newt >= 2*Math.PI){
+                        newt -= 2*Math.PI;
+                    }*/
+                    /*if (newt == t){
+                        console.log("error");
+                    }*/
+                    i["t"] = newt;
+
+                    //new x and y vals
+                    var x = Math.cos(t) + x_i;
+                    var y = Math.sin(t) + i['y'];
+                    //console.log(x + "," + y);
+                    //console.log(y);
+                    //console.log(x_i);
+                    //console.log(t);
+                    //console.log(addT);
+                    //console.log(i);
+
+                    var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                    circle.setAttribute("cx", x);
+                    circle.setAttribute("cy", y);
+                    circle.setAttribute("r", i['size']);
+                    circle.setAttribute("fill", i['color']);
+
+                    pic.append(circle);
+
+                }
+                //console.log("");
+                //clear();
+
+
+            }
+
+            //set animation time for planets
+            intervalId = window.setInterval(animatePlanets,16);
+        }
+
+
+
+        //------------------ general functions ------------------
+
+
+
+        var clear = function(event){
+            while (pic.childNodes.length > 0){
+                pic.removeChild(pic.firstChild);
+            }
+        }
+
+        window.onload = animate;
 
 
     </script>
