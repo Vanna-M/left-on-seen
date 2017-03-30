@@ -10,8 +10,9 @@ Other Members: Billy Wong, Jiaqi Gao
 everyone -- 2017-28-03 22:51
 * Received helpful feedback from peer (see below)
 * Scaling could be difficult, prioritize what aspects to make accurate
+* Use polar coordinates for circular path of planetary motion
 * 2D visualization
-* Use of SVG
+* Use of SVG for possible zoom functionality
 
 BillyW -- 2017-29-03 22:19
 * Renamed convertcsv.csv to planets.csv to understand easier
