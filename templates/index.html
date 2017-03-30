@@ -21,16 +21,16 @@
         var svg = d3.select("#svg");
 
         var planets = [
-            {"name":"Mercury", "size": 20, "x_axis": 30, "x":30, "y": 100, "color":"red", "t":0},
-            {"name":"Venus", "size": 20, "x_axis": 90, "x":90, "y": 100, "color":"red", "t":0},
-            {"name":"Earth", "size": 20, "x_axis": 150, "x":150, "y": 100, "color":"red", "t":0},
-            {"name":"Moon", "size": 20, "x_axis": 210, "x":210, "y": 100, "color":"red", "t":0},
-            {"name":"Mars", "size": 20, "x_axis": 270, "x":270, "y": 100, "color":"red", "t":0},
-            {"name":"Jupiter", "size": 20, "x_axis": 330, "x":330, "y": 100, "color":"red", "t":0},
-            {"name":"Saturn", "size": 20, "x_axis": 390, "x":390, "y": 100, "color":"red", "t":0},
-            {"name":"Uranus", "size": 20, "x_axis": 450, "x": 450, "y": 100, "color":"red", "t":0},
-            {"name":"Neptune", "size": 20, "x_axis": 510, "x":510, "y": 100, "color":"red", "t":0},
-            {"name":"Pluto", "size": 20, "x_axis": 570, "x":570, "y": 100, "color":"red", "t":0}
+            {"name":"Mercury", "size": 20, "x_axis": 50, "x":0, "y": 100, "color":"red", "t":0},
+            {"name":"Venus", "size": 20, "x_axis": 90, "x":0, "y": 100, "color":"red", "t":0},
+            {"name":"Earth", "size": 20, "x_axis": 130, "x":0, "y": 100, "color":"red", "t":0},
+            {"name":"Moon", "size": 20, "x_axis": 170, "x":0, "y": 100, "color":"red", "t":0},
+            {"name":"Mars", "size": 20, "x_axis": 210, "x":0, "y": 100, "color":"red", "t":0},
+            {"name":"Jupiter", "size": 20, "x_axis": 250, "x":0, "y": 100, "color":"red", "t":0},
+            {"name":"Saturn", "size": 20, "x_axis": 290, "x":0, "y": 100, "color":"red", "t":0},
+            {"name":"Uranus", "size": 20, "x_axis": 330, "x": 0, "y": 100, "color":"red", "t":0},
+            {"name":"Neptune", "size": 20, "x_axis": 370, "x":0, "y": 100, "color":"red", "t":0},
+            {"name":"Pluto", "size": 20, "x_axis": 410, "x":0, "y": 100, "color":"red", "t":0}
         ];
 
         var circles = svg.selectAll("circle")
@@ -73,6 +73,7 @@
 
             //makes planets rotate
             var animatePlanets = function(event){
+                //clear at start
                 clear();
                 for (j in planets){
                     var i = planets[j];
@@ -83,16 +84,11 @@
                     var t = i["t"];
                     //new angle
                     var addT = (2*Math.PI)/i['orbpd'];
-                    var newt = addT;
-                    //reset t
-                    /*if (newt >= 2*Math.PI){
-                        newt -= 2*Math.PI;
-                    }*/
-                    /*if (newt == t){
-                        console.log("error");
-                    }*/
+                    var newt = addT + i['t'];
+                    //save
                     i["t"] = newt;
 
+//BW ANG JG CODE
         //new x and y vals
 	//vf = vi + at
 	var ga = 30;
@@ -108,6 +104,12 @@
                     //console.log(t);
                     //console.log(addT);
                     //console.log(i);
+//END
+	            //VANNA's CODE
+                    //new x and y vals, w/center of 300,300
+                    //var x = x_i*Math.cos(t) + 300;
+                    //var y = x_i*Math.sin(t) + 300;
+                    //END
 
                     var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
                     circle.setAttribute("cx", x);
@@ -118,13 +120,12 @@
                     pic.append(circle);
 
                 }
-                //console.log("");
 
 
             }
 
             //set animation time for planets
-            intervalId = window.setInterval(animatePlanets,30);
+            intervalId = window.setInterval(animatePlanets,70);
         }
 
 
@@ -137,6 +138,12 @@
             while (pic.childNodes.length > 0){
                 pic.removeChild(pic.firstChild);
             }
+            var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            circle.setAttribute("cx", 300);
+            circle.setAttribute("cy", 300);
+            circle.setAttribute("r", 30);
+            circle.setAttribute("fill", "yellow");
+            pic.appendChild(circle);
         }
 
         window.onload = animate;

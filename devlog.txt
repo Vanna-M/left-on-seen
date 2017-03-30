@@ -26,3 +26,7 @@ VannaM -- 2017-29-03 23:42
 *Set up app.py
 *Added data points from py to jscript dict files
 *Switch to inline jscript to make flask use possible
+
+VannaM -- 2017-30-03 13:54
+*Basic rotation around sun finished
+*Added sun
