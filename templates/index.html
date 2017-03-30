@@ -10,7 +10,7 @@
     <script>
         var svg = d3.select("#svg");
 
-        var planets = [//MERCURY,VENUS,EARTH,MOON,MARS,JUPITER,SATURN,URANUS,NEPTUNE,PLUTO
+        var planets = [
             {"name":"Mercury", "size": 20, "x_axis": 30, "y_axis": 100, "color":"red"},
             {"name":"Venus", "size": 20, "x_axis": 60, "y_axis": 100, "color":"red"},
             {"name":"Earth", "size": 20, "x_axis": 90, "y_axis": 100, "color":"red"},
@@ -23,6 +23,8 @@
             {"name":"Pluto", "size": 20, "x_axis": 120, "y_axis": 100, "color":"red"}
         ];
 
+        var spaceships = {};
+
         var n = 0;
         {%for i in rotPds%}
             planets[n]["orbpd"] = "{{i}}";
@@ -31,7 +33,12 @@
 
         {%for i in rockets%}
             var l = "{{i}}".split(" ");
-            var yr = l[2];
+            //spaceships[] = l[2];
+            var k = ["{{rockets[i]}}".split(" ")];
+
+            //year = dest
+            spaceships[l[2]] = k;
+            //console.log(k);
         {%endfor%}
 
 
@@ -46,7 +53,7 @@
             .attr("r", function (d) { return d.size; })
             .style("fill", function(d) { return d.color; });
 
-        
+
 
     </script>
   </body>
