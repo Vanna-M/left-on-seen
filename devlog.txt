@@ -30,3 +30,7 @@ VannaM -- 2017-29-03 23:42
 VannaM -- 2017-30-03 13:54
 *Basic rotation around sun finished
 *Added sun
+
+BillyW and JiaqiG -- 2017-30-03 14:20
+* Fixed x coordinate not moving
+* Merge conflict not sure how to deal with it
