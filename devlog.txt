@@ -13,3 +13,6 @@ everyone -- 2017-28-03 22:51
 * 2D visualization
 * Use of SVG
 
+BillyW -- 2017-29-03 22:19
+* Renamed convertcsv.csv to planets.csv to understand easier
+* Added data reading functions
