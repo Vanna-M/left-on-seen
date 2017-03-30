@@ -1,24 +1,12 @@
 <html>
   <head>
     <title>Heliocentric</title>
-    <script type="text/javascript" src="../static/index.js"></script>
-    <script src="http://d3js.org/d3.v3.js"></script>
   </head>
   <body>
-    <svg width="500" height="500">
-
-        {%for i in rotPds%}
-            {{i}}
-        {%endfor%}
-        <table>
-        {% for key, value in rockets.iteritems() %}
-           <tr>
-                <th> {{ key }} </th>
-                <td> {{ value }} </td>
-           </tr>
-        {% endfor %}
-        </table>
-
+    <svg width="500" height="500" id="svg">   
     </svg>
+    
+    <script src="http://d3js.org/d3.v3.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>

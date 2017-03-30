@@ -16,7 +16,3 @@ everyone -- 2017-28-03 22:51
 BillyW -- 2017-29-03 22:19
 * Renamed convertcsv.csv to planets.csv to understand easier
 * Added data reading functions
-
-JiaqiG -- 2017-29-03 22:45
-* Set up d3 usage in js file
-* Created planets and their attributes
