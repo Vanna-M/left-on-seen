@@ -76,7 +76,7 @@
                 clear();
                 for (j in planets){
                     var i = planets[j];
-
+	             
                     //current x val
                     var x_i = i['x_axis'];
                     //current angle
@@ -93,10 +93,15 @@
                     }*/
                     i["t"] = newt;
 
-                    //new x and y vals
-                    var x = Math.cos(t) + x_i;
+        //new x and y vals
+	//vf = vi + at
+	var ga = 30;
+                    var x = t*Math.cos(t) + i['x'];
                     var y = Math.sin(t) + i['y'];
+	            i['x'] = x;
                     i['y'] = y;
+
+	            //console.log(i["name"]);
                     //console.log(x + "," + y);
                     //console.log(y);
                     //console.log(x_i);
