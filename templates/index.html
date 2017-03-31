@@ -88,14 +88,12 @@
                     //save
                     i["t"] = newt;
 
-                    var x = t*Math.cos(t) + i['x'];
-                    var y = Math.sin(t) + i['y'];
-                    i['x'] = x;
-                    i['y'] = y;
-
                     //new x and y vals, w/center of 300,300
                     var x = x_i*Math.cos(t) + 300;
                     var y = x_i*Math.sin(t) + 300;
+
+                    i['x'] = x;
+                    i['y'] = y;
 
                     var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
                     circle.setAttribute("cx", x);
@@ -111,7 +109,7 @@
             }
 
             //set animation time for planets
-            intervalId = window.setInterval(animatePlanets,50);
+            intervalId = window.setInterval(animatePlanets,1000);
         }
 
 
