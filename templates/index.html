@@ -24,7 +24,7 @@
             {"name":"Mercury", "size": 20, "x_axis": 50, "x":0, "y": 100, "color":"gray", "t":0},
             {"name":"Venus", "size": 20, "x_axis": 90, "x":0, "y": 100, "color":"#FFF999", "t":0},
             {"name":"Earth", "size": 20, "x_axis": 130, "x":0, "y": 100, "color":"blue", "t":0},
-            {"name":"Moon", "size": 20, "x_axis": 170, "x":0, "y": 100, "color":"silver", "t":0},
+            {"name":"Moon", "size": 10, "x_axis": 170, "x":0, "y": 100, "color":"silver", "t":0},
             {"name":"Mars", "size": 20, "x_axis": 210, "x":0, "y": 100, "color":"red", "t":0},
             {"name":"Jupiter", "size": 20, "x_axis": 250, "x":0, "y": 100, "color":"orange", "t":0},
             {"name":"Saturn", "size": 20, "x_axis": 290, "x":0, "y": 100, "color":"gold", "t":0},
@@ -76,24 +76,40 @@
                 //clear at start
                 clear();
                 for (j in planets){
+                    var x, y;
                     var i = planets[j];
+                    if (i['name'] == 'Moon'){
 
-                    //current x val
-                    var x_i = i['x_axis'];
-                    //current angle
-                    var t = i["t"];
-                    //new angle
-                    var minusT = (2*Math.PI)/i['orbpd'];
-                    var newt = i['t'] - minusT;
-                    //save
-                    i["t"] = newt;
+                        var t = i['t'];
+                        //new angle
+                        var minusT = (2*Math.PI)/i['orbpd'];
+                        var newt = i['t'] - minusT;
+                        //save
+                        i["t"] = newt;
 
-                    //new x and y vals, w/center of 300,300
-                    var x = x_i*Math.cos(t) + 300;
-                    var y = x_i*Math.sin(t) + 300;
+                        x = planets[2]['x'] + 3*i['size']*Math.cos(planets[2]['t']);
+                        y = planets[2]['y'] + 3*i['size']*Math.sin(planets[2]['t']);
 
-                    i['x'] = x;
-                    i['y'] = y;
+                    }
+                    else{
+
+                        //current x val
+                        var x_i = i['x_axis'];
+                        //current angle
+                        var t = i["t"];
+                        //new angle
+                        var minusT = (2*Math.PI)/i['orbpd'];
+                        var newt = i['t'] - minusT;
+                        //save
+                        i["t"] = newt;
+
+                        //new x and y vals, w/center of 300,300
+                        x = x_i*Math.cos(t) + 300;
+                        y = x_i*Math.sin(t) + 300;
+
+                        i['x'] = x;
+                        i['y'] = y;
+                    }
 
                     var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
                     circle.setAttribute("cx", x);
@@ -109,7 +125,7 @@
             }
 
             //set animation time for planets
-            intervalId = window.setInterval(animatePlanets,100);
+            intervalId = window.setInterval(animatePlanets,50);
         }
 
 
