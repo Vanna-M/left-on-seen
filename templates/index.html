@@ -83,8 +83,8 @@
                     //current angle
                     var t = i["t"];
                     //new angle
-                    var addT = (2*Math.PI)/i['orbpd'];
-                    var newt = addT + i['t'];
+                    var minusT = (2*Math.PI)/i['orbpd'];
+                    var newt = i['t'] - minusT;
                     //save
                     i["t"] = newt;
 
