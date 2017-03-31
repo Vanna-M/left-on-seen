@@ -21,16 +21,16 @@
         var svg = d3.select("#svg");
 
         var planets = [
-            {"name":"Mercury", "size": 20, "x_axis": 50, "x":0, "y": 100, "color":"red", "t":0},
-            {"name":"Venus", "size": 20, "x_axis": 90, "x":0, "y": 100, "color":"red", "t":0},
-            {"name":"Earth", "size": 20, "x_axis": 130, "x":0, "y": 100, "color":"red", "t":0},
-            {"name":"Moon", "size": 20, "x_axis": 170, "x":0, "y": 100, "color":"red", "t":0},
+            {"name":"Mercury", "size": 20, "x_axis": 50, "x":0, "y": 100, "color":"gray", "t":0},
+            {"name":"Venus", "size": 20, "x_axis": 90, "x":0, "y": 100, "color":"#FFF999", "t":0},
+            {"name":"Earth", "size": 20, "x_axis": 130, "x":0, "y": 100, "color":"blue", "t":0},
+            {"name":"Moon", "size": 20, "x_axis": 170, "x":0, "y": 100, "color":"silver", "t":0},
             {"name":"Mars", "size": 20, "x_axis": 210, "x":0, "y": 100, "color":"red", "t":0},
-            {"name":"Jupiter", "size": 20, "x_axis": 250, "x":0, "y": 100, "color":"red", "t":0},
-            {"name":"Saturn", "size": 20, "x_axis": 290, "x":0, "y": 100, "color":"red", "t":0},
-            {"name":"Uranus", "size": 20, "x_axis": 330, "x": 0, "y": 100, "color":"red", "t":0},
-            {"name":"Neptune", "size": 20, "x_axis": 370, "x":0, "y": 100, "color":"red", "t":0},
-            {"name":"Pluto", "size": 20, "x_axis": 410, "x":0, "y": 100, "color":"red", "t":0}
+            {"name":"Jupiter", "size": 20, "x_axis": 250, "x":0, "y": 100, "color":"orange", "t":0},
+            {"name":"Saturn", "size": 20, "x_axis": 290, "x":0, "y": 100, "color":"gold", "t":0},
+            {"name":"Uranus", "size": 20, "x_axis": 330, "x": 0, "y": 100, "color":"#2E64FE", "t":0},
+            {"name":"Neptune", "size": 20, "x_axis": 370, "x":0, "y": 100, "color":"azure", "t":0},
+            {"name":"Pluto", "size": 20, "x_axis": 410, "x":0, "y": 100, "color":"charcoal", "t":0}
         ];
 
         var circles = svg.selectAll("circle")
@@ -77,7 +77,7 @@
                 clear();
                 for (j in planets){
                     var i = planets[j];
-	             
+
                     //current x val
                     var x_i = i['x_axis'];
                     //current angle
@@ -88,28 +88,14 @@
                     //save
                     i["t"] = newt;
 
-//BW ANG JG CODE
-        //new x and y vals
-	//vf = vi + at
-	var ga = 30;
                     var x = t*Math.cos(t) + i['x'];
                     var y = Math.sin(t) + i['y'];
-	            i['x'] = x;
+                    i['x'] = x;
                     i['y'] = y;
 
-	            //console.log(i["name"]);
-                    //console.log(x + "," + y);
-                    //console.log(y);
-                    //console.log(x_i);
-                    //console.log(t);
-                    //console.log(addT);
-                    //console.log(i);
-//END
-	            //VANNA's CODE
                     //new x and y vals, w/center of 300,300
-                    //var x = x_i*Math.cos(t) + 300;
-                    //var y = x_i*Math.sin(t) + 300;
-                    //END
+                    var x = x_i*Math.cos(t) + 300;
+                    var y = x_i*Math.sin(t) + 300;
 
                     var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
                     circle.setAttribute("cx", x);
@@ -125,7 +111,7 @@
             }
 
             //set animation time for planets
-            intervalId = window.setInterval(animatePlanets,70);
+            intervalId = window.setInterval(animatePlanets,50);
         }
 
 
