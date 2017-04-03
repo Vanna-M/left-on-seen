@@ -1,10 +1,17 @@
 <html>
 <head>
     <title>Heliocentric</title>
+    <style>
+    body{
+        background-color: #1F0B2C;
+        color: white;
+    }
+
+    </style>
 </head>
 <body>
   <h3>Earth Year <text id="yr">1956</text></h3>
- 
+
     Speed <input type="range" id="speed" value="50" min="1" max="100" step="2" onchange="showValue(this.value)">
     <span id="range">50</span>
     <br>
@@ -28,15 +35,15 @@
 
     var planets = [
         {"name":"Mercury", "size": 20, "x_axis": 50, "x":0, "y": 100, "color":"gray", "t":0},
-        {"name":"Venus", "size": 20, "x_axis": 110, "x":0, "y": 100, "color":"#FFF999", "t":0},
-        {"name":"Earth", "size": 20, "x_axis": 170, "x":0, "y": 100, "color":"blue", "t":0},
-        {"name":"Moon", "size": 10, "x_axis": 230, "x":0, "y": 100, "color":"silver", "t":0},
-        {"name":"Mars", "size": 20, "x_axis": 290, "x":0, "y": 100, "color":"red", "t":0},
-        {"name":"Jupiter", "size": 20, "x_axis": 350, "x":0, "y": 100, "color":"orange", "t":0},
-        {"name":"Saturn", "size": 20, "x_axis": 410, "x":0, "y": 100, "color":"gold", "t":0},
-        {"name":"Uranus", "size": 20, "x_axis": 470, "x": 0, "y": 100, "color":"#2E64FE", "t":0},
-        {"name":"Neptune", "size": 20, "x_axis": 530, "x":0, "y": 100, "color":"azure", "t":0},
-        {"name":"Pluto", "size": 20, "x_axis": 590, "x":0, "y": 100, "color":"charcoal", "t":0}
+        {"name":"Venus", "size": 20, "x_axis": 100, "x":0, "y": 100, "color":"#FFF999", "t":0},
+        {"name":"Earth", "size": 20, "x_axis": 150, "x":0, "y": 100, "color":"blue", "t":0},
+        {"name":"Moon", "size": 10, "x_axis": 200, "x":0, "y": 100, "color":"silver", "t":0},
+        {"name":"Mars", "size": 20, "x_axis": 250, "x":0, "y": 100, "color":"red", "t":0},
+        {"name":"Jupiter", "size": 20, "x_axis": 300, "x":0, "y": 100, "color":"orange", "t":0},
+        {"name":"Saturn", "size": 20, "x_axis": 350, "x":0, "y": 100, "color":"gold", "t":0},
+        {"name":"Uranus", "size": 20, "x_axis": 400, "x": 0, "y": 100, "color":"#2E64FE", "t":0},
+        {"name":"Neptune", "size": 20, "x_axis": 450, "x":0, "y": 100, "color":"azure", "t":0},
+        {"name":"Pluto", "size": 20, "x_axis": 500, "x":0, "y": 100, "color":"charcoal", "t":0}
     ];
     var planetNames = ["Mercury","Venus","Earth","Lunar","Mars","Jupiter","Saturn","Uranus","Neptune","Pluto"];
 
@@ -162,6 +169,7 @@
                 circle.setAttribute("fill", "red");
 
                 pic.append(circle);
+                console.log
             }
 
         }
