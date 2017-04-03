@@ -3,9 +3,12 @@
     <title>Heliocentric</title>
   </head>
   <body>
+    Speed <input type="range" id="speed" value="50" min="1" max="100" step="2" onchange="showValue(this.value)">
+    <span id="range">50</span>
+    <br>
     <svg width="1000" height="1000" id="svg">
     </svg>
-
+    
     <script src="http://d3js.org/d3.v3.js"></script>
     <script>
 
@@ -16,6 +19,7 @@
 
         //declare variables
         var pic = document.getElementById("svg");
+	
         var intervalId;
 
         var svg = d3.select("#svg");
@@ -42,6 +46,7 @@
             .attr("cx", function (d) { return d.x; })
             .attr("cy", function (d) { return d.y; })
             .attr("r", function (d) { return d.size; })
+	    .attr("fill-opacity", 0.5)
             .style("fill", function(d) { return d.color; });
 
         //add orbital periods into planet dicts
@@ -67,7 +72,8 @@
 
         //------------------ animation ------------------
 
-
+	var spd = document.getElementById("speed").value;
+	var speed = 101-spd;
 
         var animate = function(event){
 
@@ -75,6 +81,9 @@
             var animatePlanets = function(event){
                 //clear at start
                 clear();
+	        spd = document.getElementById("speed").value;
+	        speed = 101-spd;
+	
                 for (j in planets){
                     var x, y;
                     var i = planets[j];
@@ -96,7 +105,7 @@
                         //current x val
                         var x_i = i['x_axis'];
                         //current angle
-                        var t = i["t"];
+                        var t = i["t"]/speed;
                         //new angle
                         var minusT = (2*Math.PI)/i['orbpd'];
                         var newt = i['t'] - minusT;
@@ -104,8 +113,8 @@
                         i["t"] = newt;
 
                         //new x and y vals, w/center of 300,300
-                        x = x_i*Math.cos(t) + 300;
-                        y = x_i*Math.sin(t) + 300;
+                        x = x_i*Math.cos(t)*(3/4) + 350;
+                        y = x_i*Math.sin(t)*(3/4) + 350;
 
                         i['x'] = x;
                         i['y'] = y;
@@ -116,7 +125,7 @@
                     circle.setAttribute("cy", y);
                     circle.setAttribute("r", i['size']);
                     circle.setAttribute("fill", i['color']);
-
+	            circle.setAttribute("fill-opacity", 0.7);
                     pic.append(circle);
 
                 }
@@ -132,21 +141,23 @@
 
         //------------------ general functions ------------------
 
-
-
+	var showValue = function(nv){
+	   document.getElementById("range").innerHTML = nv;
+	}
+	
         var clear = function(event){
             while (pic.childNodes.length > 0){
                 pic.removeChild(pic.firstChild);
             }
             var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-            circle.setAttribute("cx", 300);
-            circle.setAttribute("cy", 300);
+            circle.setAttribute("cx", 350);
+            circle.setAttribute("cy", 350);
             circle.setAttribute("r", 30);
             circle.setAttribute("fill", "yellow");
             pic.appendChild(circle);
         }
 
-        window.onload = animate;
+        window.onload = animate, showValue;
 
 
     </script>
