@@ -1,165 +1,216 @@
 <html>
-  <head>
+<head>
     <title>Heliocentric</title>
-  </head>
-  <body>
+</head>
+<body>
     Speed <input type="range" id="speed" value="50" min="1" max="100" step="2" onchange="showValue(this.value)">
     <span id="range">50</span>
     <br>
+    <h3 id="yr">1956</h3>
     <svg width="1000" height="1000" id="svg">
     </svg>
-    
+
     <script src="http://d3js.org/d3.v3.js"></script>
     <script>
 
 
-        //------------------set up variables------------------
+    //------------------set up variables------------------
 
 
 
-        //declare variables
-        var pic = document.getElementById("svg");
-	
-        var intervalId;
+    //declare variables
+    var pic = document.getElementById("svg");
 
-        var svg = d3.select("#svg");
+    var intervalId, intervalId2;
 
-        var planets = [
-            {"name":"Mercury", "size": 20, "x_axis": 50, "x":0, "y": 100, "color":"gray", "t":0},
-            {"name":"Venus", "size": 20, "x_axis": 90, "x":0, "y": 100, "color":"#FFF999", "t":0},
-            {"name":"Earth", "size": 20, "x_axis": 130, "x":0, "y": 100, "color":"blue", "t":0},
-            {"name":"Moon", "size": 10, "x_axis": 170, "x":0, "y": 100, "color":"silver", "t":0},
-            {"name":"Mars", "size": 20, "x_axis": 210, "x":0, "y": 100, "color":"red", "t":0},
-            {"name":"Jupiter", "size": 20, "x_axis": 250, "x":0, "y": 100, "color":"orange", "t":0},
-            {"name":"Saturn", "size": 20, "x_axis": 290, "x":0, "y": 100, "color":"gold", "t":0},
-            {"name":"Uranus", "size": 20, "x_axis": 330, "x": 0, "y": 100, "color":"#2E64FE", "t":0},
-            {"name":"Neptune", "size": 20, "x_axis": 370, "x":0, "y": 100, "color":"azure", "t":0},
-            {"name":"Pluto", "size": 20, "x_axis": 410, "x":0, "y": 100, "color":"charcoal", "t":0}
-        ];
+    var svg = d3.select("#svg");
 
-        var circles = svg.selectAll("circle")
-            .data(planets)
-            .enter()
-            .append("circle");
+    var planets = [
+        {"name":"Mercury", "size": 20, "x_axis": 50, "x":0, "y": 100, "color":"gray", "t":0},
+        {"name":"Venus", "size": 20, "x_axis": 110, "x":0, "y": 100, "color":"#FFF999", "t":0},
+        {"name":"Earth", "size": 20, "x_axis": 170, "x":0, "y": 100, "color":"blue", "t":0},
+        {"name":"Moon", "size": 10, "x_axis": 230, "x":0, "y": 100, "color":"silver", "t":0},
+        {"name":"Mars", "size": 20, "x_axis": 290, "x":0, "y": 100, "color":"red", "t":0},
+        {"name":"Jupiter", "size": 20, "x_axis": 350, "x":0, "y": 100, "color":"orange", "t":0},
+        {"name":"Saturn", "size": 20, "x_axis": 410, "x":0, "y": 100, "color":"gold", "t":0},
+        {"name":"Uranus", "size": 20, "x_axis": 470, "x": 0, "y": 100, "color":"#2E64FE", "t":0},
+        {"name":"Neptune", "size": 20, "x_axis": 530, "x":0, "y": 100, "color":"azure", "t":0},
+        {"name":"Pluto", "size": 20, "x_axis": 590, "x":0, "y": 100, "color":"charcoal", "t":0}
+    ];
+    var planetNames = ["Mercury","Venus","Earth","Lunar","Mars","Jupiter","Saturn","Uranus","Neptune","Pluto"];
 
-        var circleAttributes = circles
-            .attr("cx", function (d) { return d.x; })
-            .attr("cy", function (d) { return d.y; })
-            .attr("r", function (d) { return d.size; })
-	    .attr("fill-opacity", 0.5)
-            .style("fill", function(d) { return d.color; });
+    var circles = svg.selectAll("circle")
+    .data(planets)
+    .enter()
+    .append("circle");
 
-        //add orbital periods into planet dicts
-        var n = 0;
-        {%for i in rotPds%}
-            planets[n]["orbpd"] = "{{i}}";
-            n++;
-        {%endfor%}
+    var circleAttributes = circles
+    .attr("cx", function (d) { return d.x; })
+    .attr("cy", function (d) { return d.y; })
+    .attr("r", function (d) { return d.size; })
+    .attr("fill-opacity", 0.5)
+    .style("fill", function(d) { return d.color; });
 
-        //adds rockets w/date and destination into spaceships dict
-        var spaceships = {};
-        {%for i in rockets%}
-            var l = "{{i}}".split(" ");
-            //spaceships[] = l[2];
-            var k = ["{{rockets[i]}}".split(" ")];
+    //add orbital periods into planet dicts
+    var n = 0;
+    {%for i in rotPds%}
+    planets[n]["orbpd"] = "{{i}}";
+    n++;
+    {%endfor%}
 
-            //year = dest
-            spaceships[l[2]] = k;
-            //console.log(k);
-        {%endfor%}
+    //adds rockets w/date and destination into spaceships dict
+    var spaceships = {};
+    {%for i in rockets%}
+    var l = "{{i}}".split(" ");
+    //spaceships[] = l[2];
+    var k = "{{rockets[i]}}";
+
+    var dest;
+
+    for (j in planetNames){
+        if (k.indexOf(planetNames[j])>0){
+            dest = planetNames[j];
+            break;
+        }
+    }
+
+    if (dest){
+        //year = dest
+        spaceships[l[2]] = dest;
+    }
+    {%endfor%}
 
 
 
-        //------------------ animation ------------------
+    //------------------ animation ------------------
 
-	var spd = document.getElementById("speed").value;
-	var speed = 101-spd;
 
-        var animate = function(event){
+    //planets
+    var spd = document.getElementById("speed").value;
+    var speed = 101-spd;
 
-            //makes planets rotate
-            var animatePlanets = function(event){
-                //clear at start
-                clear();
-	        spd = document.getElementById("speed").value;
-	        speed = 101-spd;
-	
-                for (j in planets){
-                    var x, y;
-                    var i = planets[j];
-                    if (i['name'] == 'Moon'){
+    //rockets/yrs
+    var baseYr = document.getElementById("yr").innerHTML;
+    var yr = baseYr;
+    var d = new Date();
+    var now = d.getFullYear();
+    var launched = [];
 
-                        var t = i['t'];
-                        //new angle
-                        var minusT = (2*Math.PI)/i['orbpd'];
-                        var newt = i['t'] - minusT;
-                        //save
-                        i["t"] = newt;
+    var animate = function(event){
 
-                        x = planets[2]['x'] + 3*i['size']*Math.cos(planets[2]['t']);
-                        y = planets[2]['y'] + 3*i['size']*Math.sin(planets[2]['t']);
+        //makes planets rotate
+        var animatePlanets = function(event){
+            //clear at start
+            clear();
+            spd = document.getElementById("speed").value;
+            speed = 101-spd;
 
-                    }
-                    else{
+            for (j in planets){
+                var x, y;
+                var i = planets[j];
+                if (i['name'] == 'Moon'){
 
-                        //current x val
-                        var x_i = i['x_axis'];
-                        //current angle
-                        var t = i["t"]/speed;
-                        //new angle
-                        var minusT = (2*Math.PI)/i['orbpd'];
-                        var newt = i['t'] - minusT;
-                        //save
-                        i["t"] = newt;
+                    var t = i['t'];
+                    //new angle
+                    var minusT = (2*Math.PI)/i['orbpd'];
+                    var newt = i['t'] - minusT;
+                    //save
+                    i["t"] = newt;
 
-                        //new x and y vals, w/center of 300,300
-                        x = x_i*Math.cos(t)*(3/4) + 350;
-                        y = x_i*Math.sin(t)*(3/4) + 350;
-
-                        i['x'] = x;
-                        i['y'] = y;
-                    }
-
-                    var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-                    circle.setAttribute("cx", x);
-                    circle.setAttribute("cy", y);
-                    circle.setAttribute("r", i['size']);
-                    circle.setAttribute("fill", i['color']);
-	            circle.setAttribute("fill-opacity", 0.7);
-                    pic.append(circle);
+                    x = planets[2]['x'] + 3*i['size']*Math.cos(planets[2]['t']);
+                    y = planets[2]['y'] + 3*i['size']*Math.sin(planets[2]['t']);
 
                 }
+                else{
 
+                    //current x val
+                    var x_i = i['x_axis'];
+                    //current angle
+                    var t = i["t"]/speed;
+                    //new angle
+                    var minusT = (2*Math.PI)/i['orbpd'];
+                    var newt = i['t'] - minusT;
+                    //save
+                    i["t"] = newt;
+
+                    //new x and y vals, w/center of 300,300
+                    x = x_i*Math.cos(t)*(3/4) + 350;
+                    y = x_i*Math.sin(t)*(3/4) + 350;
+
+                    i['x'] = x;
+                    i['y'] = y;
+                }
+
+                var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                circle.setAttribute("cx", x);
+                circle.setAttribute("cy", y);
+                circle.setAttribute("r", i['size']);
+                circle.setAttribute("fill", i['color']);
+                circle.setAttribute("fill-opacity", 0.7);
+                pic.append(circle);
 
             }
 
-            //set animation time for planets
-            intervalId = window.setInterval(animatePlanets,50);
-        }
+            //draw rockets
+            for (i in launched){
+                var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
 
+                circle.setAttribute("cx", planets[2]['x']);
+                circle.setAttribute("cy", planets[2]['y']);
+                circle.setAttribute("r", 15);
+                circle.setAttribute("fill", "red");
 
-
-        //------------------ general functions ------------------
-
-	var showValue = function(nv){
-	   document.getElementById("range").innerHTML = nv;
-	}
-	
-        var clear = function(event){
-            while (pic.childNodes.length > 0){
-                pic.removeChild(pic.firstChild);
+                pic.append(circle);
             }
-            var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-            circle.setAttribute("cx", 350);
-            circle.setAttribute("cy", 350);
-            circle.setAttribute("r", 30);
-            circle.setAttribute("fill", "yellow");
-            pic.appendChild(circle);
+
         }
 
-        window.onload = animate, showValue;
+        var animateRockets = function(event){
+            while (launched.length > 0){
+                launched.pop();
+            }
+            yr++;
+            //not the future yet
+            if (yr > now){
+                yr = baseYr;
+            }
+            //change year
+            document.getElementById("yr").innerHTML = yr;
+            //add to list
+            if (yr in spaceships){
+                launched.push(spaceships[yr]);
+            }
+        }
+
+        //set animation time for planets
+        intervalId = window.setInterval(animatePlanets,50);
+        //set animation time for rockets
+        intervalId2 = window.setInterval(animateRockets,3000);
+    }
+
+
+
+    //------------------ general functions ------------------
+
+    var showValue = function(nv){
+        document.getElementById("range").innerHTML = nv;
+    }
+
+    var clear = function(event){
+        while (pic.childNodes.length > 0){
+            pic.removeChild(pic.firstChild);
+        }
+        var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        circle.setAttribute("cx", 350);
+        circle.setAttribute("cy", 350);
+        circle.setAttribute("r", 30);
+        circle.setAttribute("fill", "yellow");
+        pic.appendChild(circle);
+    }
+
+    window.onload = animate, showValue;
 
 
     </script>
-  </body>
+</body>
 </html>
