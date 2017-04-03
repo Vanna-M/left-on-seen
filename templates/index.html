@@ -107,7 +107,7 @@
     //rockets/yrs
     var time = document.getElementById("time");
     var baseYr = document.getElementById("yr").innerHTML;
-    var yr = baseYr;
+    var yr = parseInt(baseYr);
     var d = new Date();
     var now = d.getFullYear();
     var launched = [];
@@ -126,6 +126,7 @@
             for (j in planets){
                 var x, y;
                 var i = planets[j];
+
                 if (i['name'] == 'Moon'){
 
                     var t = i['t']/speed;
@@ -140,7 +141,7 @@
 
                 }
                 else{
-
+    
                     //current x val
                     var x_i = i['x_axis'];
                     //current angle
@@ -149,8 +150,23 @@
                     var minusT = (2*Math.PI)/(speed*i['orbpd']);
                     var newt = i['t'] - minusT;
                     //save
-                    i["t"] = newt;
 
+    if (i['name'] == 'Earth') {
+    //console.log(i['orbpd'],i['t']);
+    }
+                                      
+    
+                    if (i['name'] == 'Earth' &&  i["t"] >= -2*Math.PI && newt <= -2*Math.PI) {
+			console.log(yr,"new:",yr+1);
+			yr++;
+			time.value = yr;
+			i["t"] = 0;
+			document.getElementById("yr").innerHTML = yr;				 
+                    }
+                    else {
+                        i["t"] = newt;
+                    }
+							 
                     //new x and y vals, w/center of 500,500
                     x = x_i*Math.cos(t)*(3/4) + 500;
                     y = x_i*Math.sin(t)*(3/4) + 500;
@@ -188,8 +204,8 @@
             while (launched.length > 0){
                 launched.pop();
             }
-            yr++;
-            time.value = yr;
+            //yr++;
+            //time.value = yr;
             //not the future yet
             if (yr > now){
                 yr = baseYr;
@@ -218,6 +234,7 @@
     var changeYear = function(nv) {
         yr = nv;
         document.getElementById("yr").innerHTML = nv;
+	
     }
     var setNow = function() {
         document.getElementById("time").max = now;
