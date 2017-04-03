@@ -3,9 +3,13 @@
     <title>Heliocentric</title>
 </head>
 <body>
-    Speed <input type="range" id="speed" value="50" min="1" max="100" step="2" onchange="showValue(this.value)">
+  Speed <input type="range" id="speed" value="50" min="1" max="100" step="2" onchange="showValue(this.value)">
+  
     <span id="range">50</span>
     <br>
+
+    <input type="range" id="time" value="1956" min="1956" max="1980" onchange="changeYear(this.value)">
+    
     <h3 id="yr">1956</h3>
     <svg width="1000" height="1000" id="svg">
     </svg>
@@ -90,12 +94,15 @@
     var speed = 101-spd;
 
     //rockets/yrs
+    var time = document.getElementById("time");
     var baseYr = document.getElementById("yr").innerHTML;
     var yr = baseYr;
     var d = new Date();
     var now = d.getFullYear();
     var launched = [];
 
+
+    
     var animate = function(event){
 
         //makes planets rotate
@@ -170,6 +177,7 @@
                 launched.pop();
             }
             yr++;
+            time.value = yr;
             //not the future yet
             if (yr > now){
                 yr = baseYr;
@@ -194,7 +202,14 @@
 
     var showValue = function(nv){
         document.getElementById("range").innerHTML = nv;
+    };
+    var changeYear = function(nv) {
+        yr = nv;
+        document.getElementById("yr").innerHTML = nv;
     }
+    var setNow = function() {
+        document.getElementById("time").max = now;
+    };
 
     var clear = function(event){
         while (pic.childNodes.length > 0){
@@ -206,10 +221,10 @@
         circle.setAttribute("r", 30);
         circle.setAttribute("fill", "yellow");
         pic.appendChild(circle);
-    }
+    };
 
     window.onload = animate, showValue;
-
+    setNow();
 
     </script>
 </body>
