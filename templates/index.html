@@ -3,10 +3,11 @@
     <title>Heliocentric</title>
 </head>
 <body>
+  <h3>Earth Year <text id="yr">1956</text></h3>
+ 
     Speed <input type="range" id="speed" value="50" min="1" max="100" step="2" onchange="showValue(this.value)">
     <span id="range">50</span>
     <br>
-    <h3 id="yr">1956</h3>
     <svg width="1000" height="1000" id="svg">
     </svg>
 
@@ -110,7 +111,7 @@
                 var i = planets[j];
                 if (i['name'] == 'Moon'){
 
-                    var t = i['t'];
+                    var t = i['t']/speed;
                     //new angle
                     var minusT = (2*Math.PI)/i['orbpd'];
                     var newt = i['t'] - minusT;
@@ -126,16 +127,16 @@
                     //current x val
                     var x_i = i['x_axis'];
                     //current angle
-                    var t = i["t"]/speed;
+                    var t = i["t"];
                     //new angle
-                    var minusT = (2*Math.PI)/i['orbpd'];
+                    var minusT = (2*Math.PI)/(speed*i['orbpd']);
                     var newt = i['t'] - minusT;
                     //save
                     i["t"] = newt;
 
-                    //new x and y vals, w/center of 300,300
-                    x = x_i*Math.cos(t)*(3/4) + 350;
-                    y = x_i*Math.sin(t)*(3/4) + 350;
+                    //new x and y vals, w/center of 500,500
+                    x = x_i*Math.cos(t)*(3/4) + 500;
+                    y = x_i*Math.sin(t)*(3/4) + 500;
 
                     i['x'] = x;
                     i['y'] = y;
@@ -201,8 +202,8 @@
             pic.removeChild(pic.firstChild);
         }
         var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-        circle.setAttribute("cx", 350);
-        circle.setAttribute("cy", 350);
+        circle.setAttribute("cx", 500);
+        circle.setAttribute("cy", 500);
         circle.setAttribute("r", 30);
         circle.setAttribute("fill", "yellow");
         pic.appendChild(circle);
