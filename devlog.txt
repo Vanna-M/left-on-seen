@@ -45,3 +45,6 @@ VannaM -- 2016-03-04 10:11
 
 BillyW -- 2016-03-04 20:06
 * Made year progression relate to orbit of Earth
+
+BillyW -- 2016-03-04 22:47
+* Incorporated proper planet position when dragging the year
