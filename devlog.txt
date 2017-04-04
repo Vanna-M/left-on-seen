@@ -1,8 +1,8 @@
-    __         ______     ____           _____               
-   / /   ___  / __/ /_   / __ \____     / ___/___  ___  ____ 
+    __         ______     ____           _____
+   / /   ___  / __/ /_   / __ \____     / ___/___  ___  ____
   / /   / _ \/ /_/ __/  / / / / __ \    \__ \/ _ \/ _ \/ __ \
  / /___/  __/ __/ /_   / /_/ / / / /   ___/ /  __/  __/ / / /
-/_____/\___/_/  \__/   \____/_/ /_/   /____/\___/\___/_/ /_/ 
+/_____/\___/_/  \__/   \____/_/ /_/   /____/\___/\___/_/ /_/
 
 Project Manager: Vanna Mavromatis
 Other Members: Billy Wong, Jiaqi Gao
@@ -23,13 +23,13 @@ JiaqiG -- 2017-29-03 22:45
 * Created planets and their attributes
 
 VannaM -- 2017-29-03 23:42
-*Set up app.py
-*Added data points from py to jscript dict files
-*Switch to inline jscript to make flask use possible
+* Set up app.py
+* Added data points from py to jscript dict files
+* Switch to inline jscript to make flask use possible
 
 VannaM -- 2017-30-03 13:54
-*Basic rotation around sun finished
-*Added sun
+* Basic rotation around sun finished
+* Added sun
 
 BillyW and JiaqiG -- 2017-30-03 14:20
 * Fixed x coordinate not moving
@@ -40,8 +40,8 @@ JiaqiG -- 2017-03-04 22:22
 * Changed colors
 
 VannaM -- 2017-03-04 10:11
-*start of rockets
-*still to do: correct destination, better sizing, etc.
+* Start of rockets
+* Still to do: correct destination, better sizing, etc.
 
 BillyW -- 2017-03-04 20:06
 * Made year progression relate to orbit of Earth
@@ -51,3 +51,8 @@ BillyW -- 2017-03-04 22:47
 
 BillyW -- 2017-04-04 14:01
 * Fixed year not progressing after dragging
+
+VannaM -- 2017-04-04 15:22
+* Organized code (comments, order, etc.)
+* Message to fix rockets (aesthetic of rocket still to do)
+* Year conditions changed
