@@ -14,9 +14,9 @@
   <h3>Earth Year <text id="yr">1956</text></h3>
 
 	  
-  Speed <input type="range" id="speed" value="50" min="1" max="100" step="2" onchange="showValue(this.value)">
+  Speed <input type="range" id="speed" value="1" min="1" max="20" step="1" onchange="showValue(this.value)">
   
-    <span id="range">50</span>
+    <span id="range">1</span>
     <br>
 
    Year <input type="range" id="time" value="1956" min="1956" max="1980" onchange="changeYear(this.value)"><br>
@@ -54,6 +54,7 @@
     ];
     var planetNames = ["Mercury","Venus","Earth","Lunar","Mars","Jupiter","Saturn","Uranus","Neptune","Pluto"];
 
+    
     var circles = svg.selectAll("circle")
     .data(planets)
     .enter()
@@ -72,6 +73,7 @@
     planets[n]["orbpd"] = "{{i}}";
     n++;
     {%endfor%}
+    var earthBlips = planets[2]["orbpd"];
 
     //adds rockets w/date and destination into spaceships dict
     var spaceships = {};
@@ -101,9 +103,11 @@
 
 
     //planets
+    var maxSpd = document.getElementById("speed").max;
     var spd = document.getElementById("speed").value;
-    var speed = 101-spd;
-
+    document.getElementById("range").innerHTML = spd;
+    var speed = maxSpd+1-spd;
+    
     //rockets/yrs
     var time = document.getElementById("time");
     var baseYr = document.getElementById("yr").innerHTML;
@@ -121,7 +125,7 @@
             //clear at start
             clear();
             spd = document.getElementById("speed").value;
-            speed = 101-spd;
+            speed = maxSpd-spd;
 
             for (j in planets){
                 var x, y;
@@ -147,7 +151,8 @@
                     //current angle
                     var t = i["t"];
                     //new angle
-                    var minusT = (2*Math.PI)/(speed*i['orbpd']);
+                    //var minusT = (2*Math.PI)/(speed*i['orbpd']);
+                    var minusT = spd*(2*Math.PI)/(i['orbpd']);
                     var newt = i['t'] - minusT;
                     //save
 
@@ -161,7 +166,8 @@
 			yr++;
 			time.value = yr;
 			i["t"] = 0;
-			document.getElementById("yr").innerHTML = yr;				 
+			document.getElementById("yr").innerHTML = yr;
+			
                     }
                     else {
                         i["t"] = newt;
@@ -234,7 +240,11 @@
     var changeYear = function(nv) {
         yr = nv;
         document.getElementById("yr").innerHTML = nv;
-	
+	for (j in planets) {
+	    i = planets[j];
+	    var yearDiff = nv-baseYr;
+	    i["t"] = -yearDiff*earthBlips*(2*Math.PI)/(i['orbpd']);
+	}
     }
     var setNow = function() {
         document.getElementById("time").max = now;

@@ -17,7 +17,7 @@ def get_rotPds():
     read = csv.reader(f)
     pds = []
     for row in read:
-        if row[0] == 'Rotation Period (hours)':
+        if row[0] == 'Orbital Period (days)':
             pds = row[1:]
     f.close()
     return pds
