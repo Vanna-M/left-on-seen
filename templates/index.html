@@ -5,23 +5,24 @@
     body{
         background-color: #1F0B2C;
         color: white;
-        text-align: center; 
+        text-align: center;
     }
 
     </style>
 </head>
 <body>
-  <h3>Earth Year <text id="yr">1956</text></h3>
+    <h1>Earth Year <text id="yr">1956</text></h1>
+    <h2 id="rockets"></h2>
 
-	  
-  Speed <input type="range" id="speed" value="1" min="1" max="20" step="1" onchange="showValue(this.value)">
-  
+
+    Speed <input type="range" id="speed" value="1" min="1" max="20" step="1" onchange="showValue(this.value)">
+
     <span id="range">1</span>
     <br>
 
-   Year <input type="range" id="time" value="1956" min="1956" max="1980" onchange="changeYear(this.value)"><br>
-    
-  
+    Year <input type="range" id="time" value="1956" min="1956" onchange="changeYear(this.value)"><br>
+
+
     <svg width="1000" height="1000" id="svg">
     </svg>
 
@@ -34,12 +35,14 @@
 
 
     //declare variables
-    var pic = document.getElementById("svg");
 
+    //animation
+    var pic = document.getElementById("svg");
     var intervalId, intervalId2;
 
     var svg = d3.select("#svg");
 
+    //planet variables
     var planets = [
         {"name":"Mercury", "size": 20, "x_axis": 50, "x":0, "y": 100, "color":"gray", "t":0},
         {"name":"Venus", "size": 20, "x_axis": 100, "x":0, "y": 100, "color":"#FFF999", "t":0},
@@ -54,7 +57,12 @@
     ];
     var planetNames = ["Mercury","Venus","Earth","Lunar","Mars","Jupiter","Saturn","Uranus","Neptune","Pluto"];
 
-    
+    //planet rotation variables
+    var maxSpd = document.getElementById("speed").max;
+    var spd = document.getElementById("speed").value;
+    document.getElementById("range").innerHTML = spd;
+    var speed = maxSpd+1-spd;
+
     var circles = svg.selectAll("circle")
     .data(planets)
     .enter()
@@ -75,11 +83,13 @@
     {%endfor%}
     var earthBlips = planets[2]["orbpd"];
 
+    //space travel variables
+
     //adds rockets w/date and destination into spaceships dict
     var spaceships = {};
     {%for i in rockets%}
     var l = "{{i}}".split(" ");
-    //spaceships[] = l[2];
+
     var k = "{{rockets[i]}}";
 
     var dest;
@@ -97,40 +107,41 @@
     }
     {%endfor%}
 
-
-
-    //------------------ animation ------------------
-
-
-    //planets
-    var maxSpd = document.getElementById("speed").max;
-    var spd = document.getElementById("speed").value;
-    document.getElementById("range").innerHTML = spd;
-    var speed = maxSpd+1-spd;
-    
-    //rockets/yrs
-    var time = document.getElementById("time");
+    //calculate time
     var baseYr = document.getElementById("yr").innerHTML;
     var yr = parseInt(baseYr);
     var d = new Date();
     var now = d.getFullYear();
     var launched = [];
 
+    //html elements of rockets
+    var rocketAnnouncer = document.getElementById("rockets");
+    var time = document.getElementById("time");
 
-    
+
+
+    //------------------ animation ------------------
+
+
+
     var animate = function(event){
 
         //makes planets rotate
         var animatePlanets = function(event){
+
             //clear at start
             clear();
+
+            //get speed
             spd = document.getElementById("speed").value;
             speed = maxSpd-spd;
 
+            //animate each planet
             for (j in planets){
                 var x, y;
                 var i = planets[j];
 
+                //moon rotates around earth
                 if (i['name'] == 'Moon'){
 
                     var t = i['t']/speed;
@@ -144,8 +155,10 @@
                     y = planets[2]['y'] + 3*i['size']*Math.sin(planets[2]['t']);
 
                 }
+
+                //everyone else rotates around the sun
                 else{
-    
+
                     //current x val
                     var x_i = i['x_axis'];
                     //current angle
@@ -153,26 +166,50 @@
                     //new angle
                     //var minusT = (2*Math.PI)/(speed*i['orbpd']);
                     var minusT = spd*(2*Math.PI)/(i['orbpd']);
-                    var newt = i['t'] - minusT;
                     //save
+                    var newt = i['t'] - minusT;
 
-    if (i['name'] == 'Earth') {
-    //console.log(i['orbpd'],i['t']);
-    }
-                                      
-    
-                    if (i['name'] == 'Earth' &&  i["t"] >= -2*Math.PI && newt <= -2*Math.PI) {
-			console.log(yr,"new:",yr+1);
-			yr++;
-			time.value = yr;
-			i["t"] = 0;
-			document.getElementById("yr").innerHTML = yr;
-			
+                    //new year
+                    if (i['name'] == 'Earth' && -newt >= 2*Math.PI) {
+                        console.log("HAPPY NEW YEAR");
+                        //change the year
+                        yr++;
+
+                        //not the future yet
+                        if (yr > now){
+                            yr = baseYr;
+                        }
+
+                        //reset
+                        //update div
+                        time.value = yr;
+                        //reset theta
+                        i["t"] = 0;
+                        document.getElementById("yr").innerHTML = yr;
+                        //reset the rockets
+                        while (launched.length > 0){
+                            launched.pop();
+                        }
+
+                        //add rockets that launched + announce
+                        if (yr in spaceships){
+                            launched.push(spaceships[yr]);
+                        }
+
+                        //announce rockets
+                        //clear
+                        rocketAnnouncer.innerHTML = " ";
+                        //new rockets
+                        for (i in launched){
+                            rocketAnnouncer.innerHTML = "Rocket Type: " + launched[i];
+                        }
+
+
                     }
                     else {
                         i["t"] = newt;
                     }
-							 
+
                     //new x and y vals, w/center of 500,500
                     x = x_i*Math.cos(t)*(3/4) + 500;
                     y = x_i*Math.sin(t)*(3/4) + 500;
@@ -201,38 +238,19 @@
                 circle.setAttribute("fill", "red");
 
                 pic.append(circle);
-                console.log
             }
 
-        }
-
-        var animateRockets = function(event){
-            while (launched.length > 0){
-                launched.pop();
-            }
-            //yr++;
-            //time.value = yr;
-            //not the future yet
-            if (yr > now){
-                yr = baseYr;
-            }
-            //change year
-            document.getElementById("yr").innerHTML = yr;
-            //add to list
-            if (yr in spaceships){
-                launched.push(spaceships[yr]);
-            }
         }
 
         //set animation time for planets
         intervalId = window.setInterval(animatePlanets,50);
-        //set animation time for rockets
-        intervalId2 = window.setInterval(animateRockets,3000);
     }
 
 
 
     //------------------ general functions ------------------
+
+
 
     var showValue = function(nv){
         document.getElementById("range").innerHTML = nv;
@@ -240,11 +258,11 @@
     var changeYear = function(nv) {
         yr = nv;
         document.getElementById("yr").innerHTML = nv;
-	for (j in planets) {
-	    i = planets[j];
-	    var yearDiff = nv-baseYr;
-	    i["t"] = -yearDiff*earthBlips*(2*Math.PI)/(i['orbpd']);
-	}
+        for (j in planets) {
+            i = planets[j];
+            var yearDiff = nv-baseYr;
+            i["t"] = -yearDiff*earthBlips*(2*Math.PI)/(i['orbpd']);
+        }
     }
     var setNow = function() {
         document.getElementById("time").max = now;
