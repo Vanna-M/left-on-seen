@@ -267,6 +267,8 @@
             var yearDiff = nv-baseYr;
             i["t"] = -yearDiff*earthBlips*(2*Math.PI)/(i['orbpd']);
         }
+        //clear rockets
+        launched = {};
     }
     var setNow = function() {
         document.getElementById("time").max = now;
