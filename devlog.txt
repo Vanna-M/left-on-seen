@@ -60,3 +60,6 @@ VannaM -- 2017-04-04 15:22
 VannaM -- 2017-04-04 21:08
 * (Finally) finished rocket animation
 * Moon
+
+JiaqiG -- 2016-04-05 06:27
+* Added text to label planets, Moon, and Pluto
