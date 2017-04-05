@@ -12,7 +12,7 @@
 </head>
 <body>
     <h1>Earth Year <text id="yr">1956</text></h1>
-    <h2 id="rockets"></h2>
+    <h2 id="rockets"><br></h2>
 
 
     Speed <input type="range" id="speed" value="1" min="1" max="20" step="1" onchange="showValue(this.value)">
@@ -189,7 +189,7 @@
 
                         //announce rockets
                         //clear
-                        rocketAnnouncer.innerHTML = " ";
+                        rocketAnnouncer.innerHTML = "<br>";
                         //new rockets
                         //add rockets that launched + announce
                         if (yr in spaceships){
