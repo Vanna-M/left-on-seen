@@ -56,3 +56,6 @@ VannaM -- 2017-04-04 15:22
 * Organized code (comments, order, etc.)
 * Message to fix rockets (aesthetic of rocket still to do)
 * Year conditions changed
+
+VannaM -- 2017-04-04 21:08
+* (Finally) finished rocket animation
