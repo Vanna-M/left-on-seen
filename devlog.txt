@@ -63,3 +63,4 @@ VannaM -- 2017-04-04 21:08
 
 JiaqiG -- 2016-04-05 06:27
 * Added text to label planets, Moon, and Pluto
+* Updated README picture
