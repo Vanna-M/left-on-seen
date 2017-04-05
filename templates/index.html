@@ -112,7 +112,7 @@
     var yr = parseInt(baseYr);
     var d = new Date();
     var now = d.getFullYear();
-    var launched = [];
+    var launched = {};
 
     //html elements of rockets
     var rocketAnnouncer = document.getElementById("rockets");
@@ -171,6 +171,7 @@
 
                     //new year
                     if (i['name'] == 'Earth' && -newt >= 2*Math.PI) {
+
                         //change the year
                         yr++;
 
@@ -185,23 +186,17 @@
                         //reset theta
                         i["t"] = 0;
                         document.getElementById("yr").innerHTML = yr;
-                        //reset the rockets
-                        while (launched.length > 0){
-                            launched.pop();
-                        }
-
-                        //add rockets that launched + announce
-                        if (yr in spaceships){
-                            launched.push(spaceships[yr]);
-                        }
 
                         //announce rockets
                         //clear
                         rocketAnnouncer.innerHTML = " ";
                         //new rockets
-                        for (i in launched){
-                            rocketAnnouncer.innerHTML = "Rocket Type: " + launched[i];
+                        //add rockets that launched + announce
+                        if (yr in spaceships){
+                            launched[yr] = [parseInt(planets[2]['x']), parseInt(planets[2]['y'])];
+                            rocketAnnouncer.innerHTML = "Rocket Type: " + spaceships[yr];
                         }
+
 
 
                     }
@@ -229,14 +224,23 @@
 
             //draw rockets
             for (i in launched){
-                var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                var rocketPic = document.createElementNS("http://www.w3.org/2000/svg", "image");
 
-                circle.setAttribute("cx", planets[2]['x']);
-                circle.setAttribute("cy", planets[2]['y']);
-                circle.setAttribute("r", 15);
-                circle.setAttribute("fill", "red");
+                rocketPic.setAttribute("x", String(launched[i][0]));
+                rocketPic.setAttribute("y", String(launched[i][1]));
+                rocketPic.setAttribute("height", 50);
+                rocketPic.setAttribute("width", 50);
+                rocketPic.setAttribute("href","../static/rocketPic.png");
+                //change x, constant y
+                launched[i][0] += parseInt(spd);
 
-                pic.append(circle);
+                //if off screen
+                if (launched[i][0] > pic.width){
+                    delete launched[i];
+                }
+
+
+                pic.append(rocketPic);
             }
 
         }
