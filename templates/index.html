@@ -45,15 +45,15 @@
     //planet variables
     var planets = [
         {"name":"Mercury", "size": 20, "x_axis": 50, "x":0, "y": 100, "color":"gray", "t":0},
-        {"name":"Venus", "size": 20, "x_axis": 100, "x":0, "y": 100, "color":"#FFF999", "t":0},
+        {"name":"Venus", "size": 20, "x_axis": 100, "x":0, "y": 100, "color":"#D6C05D", "t":0},
         {"name":"Earth", "size": 20, "x_axis": 150, "x":0, "y": 100, "color":"blue", "t":0},
         {"name":"Moon", "size": 10, "x_axis": 200, "x":0, "y": 100, "color":"silver", "t":0},
         {"name":"Mars", "size": 20, "x_axis": 250, "x":0, "y": 100, "color":"red", "t":0},
         {"name":"Jupiter", "size": 20, "x_axis": 300, "x":0, "y": 100, "color":"orange", "t":0},
         {"name":"Saturn", "size": 20, "x_axis": 350, "x":0, "y": 100, "color":"gold", "t":0},
         {"name":"Uranus", "size": 20, "x_axis": 400, "x": 0, "y": 100, "color":"#2E64FE", "t":0},
-        {"name":"Neptune", "size": 20, "x_axis": 450, "x":0, "y": 100, "color":"azure", "t":0},
-        {"name":"Pluto", "size": 20, "x_axis": 500, "x":0, "y": 100, "color":"charcoal", "t":0}
+        {"name":"Neptune", "size": 20, "x_axis": 450, "x":0, "y": 100, "color":"#6FD0DF", "t":0},
+        {"name":"Pluto", "size": 12, "x_axis": 500, "x":0, "y": 100, "color":"charcoal", "t":0}
     ];
     var planetNames = ["Mercury","Venus","Earth","Lunar","Mars","Jupiter","Saturn","Uranus","Neptune","Pluto"];
 
@@ -72,7 +72,6 @@
     .attr("cx", function (d) { return d.x; })
     .attr("cy", function (d) { return d.y; })
     .attr("r", function (d) { return d.size; })
-    .attr("fill-opacity", 0.5)
     .style("fill", function(d) { return d.color; });
 
     //add orbital periods into planet dicts
@@ -117,6 +116,20 @@
     //html elements of rockets
     var rocketAnnouncer = document.getElementById("rockets");
     var time = document.getElementById("time");
+
+    var text = svg.selectAll("text")
+                            .data(planets)
+                            .enter()
+                            .append("text");
+
+    var textAttributes = text
+                     .attr("x", function(d) { return d.x; })
+                     .attr("y", function(d) { return d.y; })
+                     .text( function (d) { return d.name; })
+                     .attr("font-family", "sans-serif")
+                     .attr("font-size", "18px")
+                     .attr("fill", "white");
+
 
 
 
@@ -218,8 +231,14 @@
                 circle.setAttribute("cy", y);
                 circle.setAttribute("r", i['size']);
                 circle.setAttribute("fill", i['color']);
-                circle.setAttribute("fill-opacity", 0.7);
                 pic.append(circle);
+
+                var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                text.setAttribute("x", x);
+                text.setAttribute("y", y);
+                text.textContent = i['name'];
+                text.setAttribute('fill', 'white');
+                pic.append(text);
 
             }
 
@@ -282,9 +301,26 @@
         circle.setAttribute("cx", 500);
         circle.setAttribute("cy", 500);
         circle.setAttribute("r", 30);
-        circle.setAttribute("fill", "yellow");
+        circle.setAttribute("fill", "#E2F61E");
         pic.appendChild(circle);
+
+        var Scircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        Scircle.setAttribute("cx", 500);
+        Scircle.setAttribute("cy", 500);
+        Scircle.setAttribute("r", 35);
+        Scircle.setAttribute("fill", "#E2F61E");
+        Scircle.setAttribute("fill-opacity", 0.4);
+        pic.appendChild(Scircle);
+
+        var Stext = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        Stext.setAttribute("x", 489);
+        Stext.setAttribute("y", 502);
+        Stext.textContent = 'Sun';
+        Stext.setAttribute('fill', 'white');
+        pic.append(Stext);
+
     };
+
 
     window.onload = animate, showValue;
     setNow();
