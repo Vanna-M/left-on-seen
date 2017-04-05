@@ -151,8 +151,9 @@
                     //save
                     i["t"] = newt;
 
-                    x = planets[2]['x'] + 3*i['size']*Math.cos(planets[2]['t']);
-                    y = planets[2]['y'] + 3*i['size']*Math.sin(planets[2]['t']);
+                    //~1 full moon a month, so rotates 12 x as fast
+                    x = planets[2]['x'] + 3*i['size']*Math.cos(12*planets[2]['t']);
+                    y = planets[2]['y'] + 3*i['size']*Math.sin(12*planets[2]['t']);
 
                 }
 
